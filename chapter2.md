@@ -36,6 +36,7 @@ Processes in different hosts communicate by exchanging messages over the network
 ## interface connecting the processes & networks
 
 Processes send messages through the network through a software interface known as the ***socket***
+this is known as the API
 
 
 
