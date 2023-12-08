@@ -107,7 +107,84 @@ due to the lightweight nature, it provides **unreliable data transfer** providin
 | lightweight   | messages may be received out of order   |
 | no handshaking required   | messages can get lost   |
 
+*no congestion control mechanism* 
 
 ***note: neither UDP or TCP provide any encryption in the box, data needs to be encrypted before sending out through the network*** 
 
 
+#### application layer protocols
+>***application-level protocols***: how an apps processes, running on different end-systems pass messages to each other 
+
+
+The application layer protocol defines 4 things
+
+| APL   | meaning    |
+|--------------- | --------------- |
+| type   | the types of messages exchanged   |
+| syntax   | syntax of message types, what fields are allowed   |
+| semantics   | meaning of the information in the fields   |
+| rules for how   | rules for determing when and how a process sends messages and responds to them  |
+
+Some web application protocols like **http** are an example of this, if a developer follows the rules in https, they can send messages through the network
+
+
+**Distinguishing: network applications and application layer protocols**
+The application layer protocol is a piece of a network application, w web browser is a network app that uses HTTPS and HTML
+
+
+#### HTTP
+https is broken up into two programs, a client program and server program, they talk to eachother on different end systems. They do so by **exchanging HTTP messages**
+
+**TCP** is used as the underlying transport protocols, the http client will initiate a **TCP Connection** with the server through their socket interface
+
+The server will now send and receive HTTPS through their socket interface, this is how they will exchange HTTP messages
+
+**State Changes** on the client side are unknown, HTTP is a **stateless** protocol by default
+
+
+##### persistent/ non-persistent connections
+developer needs to decide if connections made over http will be either persistent or non-persistent
+**non-persistent**: each response/request pair is sent through a new *separate*  **TCP** connection 
+
+
+
+***round-trip-time (RTT)*** is the time it takes for a packet to send to the server *and* for a response to be sent *back*, this is calculated using
+- packet prop-delay
+- packet process-delay
+- packet queue-delay
+
+When a user clicks on a hyperlink, browser initiates TCP connection, initiates ***three-way handshake***
+- client sends small TCP segment to server
+- server acknowledges and responds with its own TCP segment
+- client *then* sends a **HTTP request** combined with the **acknowledgement of TCP connection** 
+ 
+Finally, the server will respond with a **TCP** response containing the HTML file
+*the total response time*: **two RTTs + transmission time at the server of HTML file**  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
