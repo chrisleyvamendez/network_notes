@@ -162,6 +162,36 @@ Finally, the server will respond with a **TCP** response containing the HTML fil
 *the total response time*: **two RTTs + transmission time at the server of HTML file**  
 
 
+*non-persistent connections* may cause strain on the server due to the amount of TCP connections needed, where a machine may be servicing hundreds of clients, especially due to a new connection being needed ***per request*** 
+
+
+***how do persistent connections solve this issue?***:
+
+**Pipe-lining**:
+HTTP/1.1 established the use of persistent connections, the server will leave the TCP connection open after sending a response, all subsequent requests & responses will be sent through this same connection, **requests can be made back to back *without* the need for replies to pending requests **
+
+HTTP defines 2 types of message formats: **requests** & **responses**
+
+###### REQUEST (GET)
+
+A typical http request message will contain the following fields
+
+1. **GET**
+2. **Host**
+3. **Connection**
+4. **User-agent**
+5. **Accept-language**
+
+
+
+
+
+
+
+
+
+
+
 
 
 
